@@ -1,0 +1,39 @@
+
+<div class="container" style="position:relative;top:100px">
+    <div class="card mx-auto" style="width: 60rem;">
+        <div class="card-body text-center">
+            <span style="font-size: 25px;"><b>Listado de Productos</b></span>
+            <button class="btn btn-primary float-end rounded" routerLink="/crear-producto"><i class="fa-sharp fa-solid fa-plus"></i> Añadir Nuevo</button>
+            <table class="table table-stripped mt-5 text-dark" *ngIf="listProductos?.length > 0">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha de Vencimiento</th>
+                    <th></th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pro of listProductos">
+                    <th scope="row">{{pro.id}}</th>
+                    <td>{{pro.nombre}}</td>
+                    <td><img [src]="imgURL + '/' + pro.imagen" alt="{{pro.imagen}}" width="50px" height="50px" class="rounded">
+                    </td>
+                    <td>{{pro.categoria}}</td>
+                    <td>{{pro.precio | currency:'USD'}}</td>
+                    <td>{{pro.fecha_vencimiento}}</td>
+                    <td><button [routerLink]="['/editar-producto',pro.id]" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+                    <button (click)="eliminarProducto(pro.id)" class="btn btn-danger" style="position: relative;left: 20px;"><i class="fa-solid fa-trash"></i> Eliminar</button></td>
+                  </tr>
+               
+                </tbody>
+              </table>
+            <h5 *ngIf="listProductos?.length == 0">no hay productos disponibles</h5>
+        </div>
+      </div>
+    
+</div>

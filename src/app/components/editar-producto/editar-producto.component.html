@@ -1,0 +1,53 @@
+<div class="container mx-auto rounded bg-white" style="position: relative;top:50px;width: 35rem;padding-bottom: 60px;padding-top: 20px;">
+    <div class="text-center bg-secondary text-white rounded">
+    <span style="font-size: 25px;"><b>Editar Producto</b></span></div>
+
+    <form>
+    <div class="form-row">
+
+    <div class="col-12 mt-4">
+        <label for="nombre" class="form-label">Nombre Producto</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Producto" [(ngModel)]="productoNuevo.nombre" name="nombre" >       
+    </div>
+    <label for="imagen" class="form-label mt-2">Subir Imagen</label>
+
+    <div class="col-6 mt-2">          
+        <img [src]="imgSelect || nuevaUrl"  width="100px" height="100px" class="rounded" (click)="photoInput.click()">
+        
+    </div>
+
+        <div class="col-6 mt-2">
+        <input type="file"  class="d-none" (change)="capturarFile($event)" #photoInput > 
+         
+    </div>    
+
+    <div class="col-12 mt-2">
+        <label for="categoria" class="form-label">Categoria Producto</label>
+        <select id="categoria"  class="form-control" [(ngModel)]="productoNuevo.categoria" name="categoria" >
+          <option selected>Aseo</option>
+          <option>Cocina</option>
+          <option>Licores</option>
+          <option>Gaseosas</option>
+          <option>Lacteos</option>
+
+        </select>            
+    </div>
+
+    <div class="col-12 mt-2">
+        <label for="precio"  class="form-label">Precio</label>
+        <input type="number"  class="form-control" placeholder="Precio" id="precio" [(ngModel)]="productoNuevo.precio" name="precio" >
+        
+    </div>
+
+    <div class="col-12 mt-2">
+        <label for="fechav" class="form-label">Fecha de Vencimiento</label>
+        <input type="date"  value="2017-06-01" id="fechav" style="margin-left: 20px;" [(ngModel)]="productoNuevo.fecha_vencimiento" name="fechav" />
+    </div>
+</div>
+    <button routerLink="/" type="submit" class="btn btn-primary float-start mt-2">Volver</button>
+    <button (click)="actualizarProducto()" class="btn btn-success float-end mt-2">Actualizar</button>
+
+</form>
+</div>
+
+

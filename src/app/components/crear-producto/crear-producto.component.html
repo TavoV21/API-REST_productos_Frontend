@@ -1,0 +1,51 @@
+    
+            <div class="container mx-auto rounded bg-white" style="position: relative;top:50px;width: 35rem;padding-bottom: 60px;padding-top: 20px;">
+            <div class="text-center bg-secondary text-white rounded">
+            <span style="font-size: 25px;"><b>Crear Producto</b></span></div>
+
+            <form (ngSubmit)="guardarProducto(nombre,categoria,precio,fechav)">
+            <div class="form-row">
+
+            <div class="col-12 mt-4">
+                <label for="nombre" class="form-label">Nombre Producto</label>
+                <input type="text" #nombre class="form-control" placeholder="Producto" id="nombre">
+            </div>
+            <label for="imagen" class="form-label mt-2">Subir Imagen</label>
+
+            <div class="col-6 mt-2">          
+                <img [src]=" imgSelect || url" alt="{{url}}" width="100px" height="100px" class="rounded" (click)="photoInput.click()">
+              
+            </div>
+
+                <div class="col-6 mt-2">
+                <input type="file" class="d-none" id="imagen" (change)="capturarFile($event)" #photoInput> 
+            </div>    
+             
+            <div class="col-12 mt-2">
+                <label for="categoria" class="form-label">Categoria Producto</label>
+                <select id="categoria" #categoria class="form-control">
+                  <option selected>Aseo</option>
+                  <option>Cocina</option>
+                  <option>Licores</option>
+                  <option>Gaseosas</option>
+                  <option>Lacteos</option>
+
+                </select>            
+            </div>
+
+            <div class="col-12 mt-2">
+                <label for="precio"  class="form-label">Precio</label>
+                <input type="number" #precio class="form-control" placeholder="Precio" id="precio">
+            </div>
+
+            <div class="col-12 mt-2">
+                <label for="fechav" class="form-label">Fecha de Vencimiento</label>
+                <input type="date" #fechav value="2017-06-01" id="fechav" style="margin-left: 20px;"/>
+            </div>
+        </div>
+            <button routerLink="/" type="submit" class="btn btn-primary float-start mt-2">Volver</button>
+            <button type="submit" class="btn btn-success float-end mt-2">Guardar</button>
+
+        </form>
+    </div>
+   
